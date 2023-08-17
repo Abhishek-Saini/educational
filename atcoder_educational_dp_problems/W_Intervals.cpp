@@ -161,6 +161,7 @@ int main(){
     vector<lld> dp(n + 1, 0);
     SegmentTreeLazy seg(n + 1);
     lld mn = accumulate(A + 1, A + n + 1, 0);
+    // notStarted is for intervals that start after the current index.
     lld notStarted = accumulate(A + 1, A + n + 1, 0);
     rep(i,1,n) {
         rep(var,0,i-1) {

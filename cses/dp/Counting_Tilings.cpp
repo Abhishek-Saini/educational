@@ -160,12 +160,11 @@ int main(){
 
     // Adding an optimization :  when n and m are both odd , then ans is always 0 for 2x1 tilling 
 
-    if( (n&1) && (m&1))
-    {
+    if((n&1) && (m&1)) {
         cout<<0;
+        return;
     }
-    else{
-     
+   
     int tot = (1 << n) - 1;
     int ind = 1;
     dp[0][tot] = 1;
@@ -189,6 +188,6 @@ int main(){
     }
     ind ^= 1;
     cout << dp[ind][tot].x;
-    }
+    
     return 0;
 }

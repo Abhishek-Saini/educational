@@ -10,5 +10,5 @@ Solution of all 26 problems for the Atcoder DP [contest](https://atcoder.jp/cont
 Solutions from codeforces rounds
 
 
-#### CSES
+#### cses
 Solutions for [CSES problem set](https://cses.fi/problemset/)

@@ -12,3 +12,9 @@ Solutions from codeforces rounds
 
 #### cses
 Solutions for [CSES problem set](https://cses.fi/problemset/)
+
+Sections already added -
+* DP
+* Sorting and searching
+* Tree Algorithms
+* Graph

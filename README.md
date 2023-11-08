@@ -15,7 +15,8 @@ Solutions from codeforces rounds
 Solutions for [CSES problem set](https://cses.fi/problemset/)
 
 Sections already added -
-* DP
-* Sorting and searching
-* Tree Algorithms
-* Graph
+* DP - 19/19
+* Sorting and searching - 35/35
+* Tree Algorithms - 17/17
+* Graph - 36/36
+* Mathematics - 31/31

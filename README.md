@@ -20,3 +20,4 @@ Sections already added -
 * Tree Algorithms - 17/17
 * Graph - 36/36
 * Mathematics - 31/31
+* Advanced - 24/24

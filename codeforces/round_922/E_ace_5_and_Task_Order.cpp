@@ -54,6 +54,7 @@ int main(){
         auto findAns = [&](auto self, vector<int>& arr, int startPos) -> void {
             int sz = arr.size();
             int randomPivotInd = rand() % sz;
+            random_shuffle(all(arr));
             // find value of pivot
             while(true) {
                 int res = Ask(arr[randomPivotInd]);

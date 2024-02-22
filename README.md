@@ -12,7 +12,7 @@ Solutions from codeforces rounds
 
 
 #### cses
-Solutions for [CSES problem set](https://cses.fi/problemset/)
+Solutions for [CSES problem set](https://cses.fi/problemset/) \
 Useful [Chrome Extension](https://chromewebstore.google.com/u/4/detail/cses-helper/ngfkbnbpdgfeaaipaanopmhfbbkfcnhn?hl=en) to sort CSES problems by solved count.
 
 Sections already added -

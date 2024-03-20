@@ -23,4 +23,5 @@ Sections already added -
 * Graph - 36/36
 * Mathematics - 31/31
 * Range Queries - 19/19
+* String - 17/17
 * Advanced - 24/24

@@ -420,6 +420,30 @@ int main() {
     // Given N elements
     // Q queries, find OR of elements in range [L, R] for each query
 
+    // x ^ x = 0
+    // x | x = x
+
+    // Calculate Prefix[X] = A[1] | A[2] | A[3] | ... | A[X]
+
+    // Prefix[R] = A[1] | A[2] | A[3] | ... A[L - 1]......A[R - 1] | A[R]
+    // Prefix[L-1] = A[1] | A[2] | A[3] | ... | A[L-1]
+
+    // Prefix[R] | Prefix[L-1] = A[1] | A[2] | A[3] | ... A[L - 1]......A[R - 1] | A[R]
+
+    // [L, R] = OR
+    // What do we need for k-th bit is 1
+    // One element which have kth bit set
+    // A              = [                   ]
+    // Is_Kth_bit_set = [0, 1, 0, 1, 1, 1, 1]
+    // Count[i] = Number of 1s till now // Number of 0s till now
+    // Count[r] - Count[l - 1] = Count of 1 between L to R = if this is more than 0
+    // kth-bit set
+    // int ans = 0;
+    // ans += 1 << k;
+
+    // Home Work - write code for this
+
+
 
 
 
@@ -441,6 +465,16 @@ int main() {
     // Q queries, find AND of elements in range [L, R] for each query
 
 
+    // for AND to be zero for [L, R]
+    // We need atleast one zero [unset bit]
+    // Count[r] - Count[l - 1] = Count of 1 between L to R = if this is equal to R - L + 1
+    // if all are set
+
+
+
+
+
+
 
 
 
@@ -452,15 +486,224 @@ int main() {
 
     // Problem ------------------------------
     // Given N elements
-    // calculate the number of such pairs (i,j) where i < j and Ai AND Aj >= Ai XOR Aj
+    // calculate the number of such pairs (i,j) where i < j,  Ai AND Aj >= Ai XOR Aj
+
+
+    // 2 ^ 0 + 2 ^ 1 + 2 ^ 2 + 2 ^ 3                    2 ^ 4
+    // 2 ^ 0 + 2 ^ 1............2 ^ k                   2 ^ (k + 1)
+    // (2 ^ (k + 1)) - 1                                2 ^ (k + 1)
+
+
+
+    // 1000   > 0 _ _ _
+    
+
+    // Ax = largest set bit = kth_bit
+    // Ay = largest set bit = kth_bit
+    // Ax AND Ay > Ax XOR Ay
+
+    // let's say Ay - largest set_bit is - (k + 2)
+    // Ax (k + 2)th bit is 0
+    // (k + 2)th bit in Ax AND Ay = 0
+    // (k + 2)th bit in Ax XOR Ay = 1
+
+    // Ay - largest set_bit is - (k - 3)
+    // Ay kth bit is 0
+    // (k)th bit in Ax AND Ay = 0
+    // (k)th bit in Ax XOR Ay = 1
+
+    // Ax AND Ay = Ax XOR Ay -> when both are 0
+    
+
+    // ith bit is largest set bit of Z numbers
+    // Zc2 = Z * (Z - 1) / 2
+
+
+
+
+
+
+
+
+
+
+
+
+    // Problem
+    // Given N elements
+    // Find sum of Ai XOR Aj for all pairs of i and j 
+    // (k1, k2) and (k2, k1) are same pairs => count once
+
+    vector<int> A(n + 1);
+    long long ans = 0;
+    for(int i = 1; i <= n; ++i) for(int j = i + 1; j <= n; j++) {
+        ans += A[i] ^ A[j];
+    }
+
+    
+    for(int bit = 0; bit <= 30; bit++) {
+        int cntSet = 0;
+        for(int i = 1; i <= n; i++) {
+            if(A[i] & (1 << bit)) {
+                cntSet++;
+            }
+        }
+        int notSet = n - cntSet;
+        // We have two boxes
+        // Box 1 have 6 balls, Box 2 have 10 balls
+        // pick one ball from each, how many cases are possible
+        int totalPairsWithSetBit = cntSet * notSet;
+
+        ans += totalPairsWithSetBit * (1 << bit);
+    }
+
+
+    // Home work
+    // Find sum of all pairs of XOR of subarray [L, R] for all L < R.
+    // [L, R] = A[L] ^ A[L + 1] ^ A[L + 1].......A[R]
+
+
+
+
+
+
+
+
+
+
+
+
+    // What if we have to find sum of Ai AND Aj for all pairs of i and j
+
+
+    for(int bit = 0; bit <= 30; bit++) {
+        int cntSet = 0;
+        for(int i = 1; i <= n; i++) {
+            if(A[i] & (1 << bit)) {
+                cntSet++;
+            }
+        }
+        int notSet = n - cntSet;
+        // cntSetC2
+        int totalPairsWithSetBit = cntSet * (cntSet - 1) / 2;
+
+        ans += totalPairsWithSetBit * (1 << bit);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // what if we have to find sum of Ai OR Aj for all pairs of i and j
+
+    for(int bit = 0; bit <= 30; bit++) {
+        int cntSet = 0;
+        for(int i = 1; i <= n; i++) {
+            if(A[i] & (1 << bit)) {
+                cntSet++;
+            }
+        }
+        int notSet = n - cntSet;
+        // cntSetC2
+        int totalPairsWithBitNotSet = notSet * (notSet - 1) / 2;
+        int totalPairsWithSetBit = n * (n - 1) / 2 - totalPairsWithBitNotSet;
+
+        ans += totalPairsWithSetBit * (1 << bit);
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
     // Problem ------------------------------
     // Idea used in bitmasking dynamic programming (it's okay if you don't understand this at this point)
-    // Given N elements
-    // iterate over all possible subsets of N
+    // Given N elements, N = 20
+    // Store sum of all subsets (Vector with all the sums)
+
+    // n = 5
+    // dp[2][2][2][2][2][2][2][2][2][2]
+
+    // 10000
+
+    // n = 3
+    // 0 to 7
+
+    // 2 ^ 3 = 8
+
+    // 000
+    // 001
+    // 010
+    // 011
+    // 100
+    // 101
+    // 110
+    // 111
+
+    // n = 10
+    // 0 to (2 ^ n) - 1
+    // vector<int> A(n); // 0 to n - 1
+    int last = (1 << n) - 1;
+
+    map<int, int> sum;
+    sum[0] = 0;
+
+    // for(int mask = 1; mask <= last; mask++) { // iterate over all subsets
+    //     int currSum = 0;
+    //     for(int bit = 0; bit < n; bit++) { // checking which elements are present
+    //         if(mask & (1 << bit)) {
+    //             // means this element is present in the subset
+    //             currSum += A[bit];
+    //         }
+    //     }
+    //     sum[mask] = currSum;
+    // }
+
+    // (2 ^ n) * (n + log(2 ^ n))
+
+    // mask    = 11010 = 1st and 4th are present
+    // remMask = 11000 = we removed 1st bit
+
+
+    for(int mask = 1; mask <= last; mask++) { // iterate over all subsets
+        int currSum = 0;
+        for(int bit = 0; bit < n; bit++) { // checking which elements are present
+            if(mask & (1 << bit)) {
+                // means this element is present in the subset
+                int remMask = mask - (1 << bit);
+
+                currSum = sum[remMask] + A[bit];
+                break;
+            }
+        }
+        sum[mask] = currSum;
+    }
+    // Home work - Find TC
+
+
+    
+
+
+
+
+
 
 
 
@@ -473,6 +716,9 @@ int main() {
     // __builtin_popcount
     // __builtin_ctz
     // __builtin_clz
+
+
+
     
     return 0;
 }

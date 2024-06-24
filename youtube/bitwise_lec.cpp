@@ -280,7 +280,7 @@ int main() {
 
     // Problem ------------------------------
     // Given array of n integers
-    // numbers are repeated twice except one number which is repeated only once
+    // numbers are repeated twice except one number which occurs only once
     // find that number K which comes only once
     // xor of all numbers
 
@@ -305,7 +305,7 @@ int main() {
 
 
     // Given array of n integers
-    // numbers are repeated four times except one number which is repeated only once
+    // numbers are repeated four times except one number which occurs only once
 
     // x ^ x ^ x ^ x = 0
     // xor again
@@ -319,7 +319,7 @@ int main() {
 
 
     // Given array of n integers
-    // numbers are repeated three times except one number which is repeated only once
+    // numbers are repeated three times except one number which occurs only once
     // x ^ x ^ x = x
 
     // ith bit set cnt = 0, 1, 3, 4, 6, 7....
